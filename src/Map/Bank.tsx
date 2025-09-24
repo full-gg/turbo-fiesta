@@ -1,10 +1,9 @@
-import institute_office from "../img/institute_office.png"
+import bank_office from "../img/bank_office.png"
 
 const Institute = () => {
     return (
         <div>
-            hi
-            <img src={institute_office} alt="" />
+            <img src={bank_office} alt="" />
         </div>
     )
 }
