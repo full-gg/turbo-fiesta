@@ -1,4 +1,22 @@
 import { FC } from "react";
+import heart from "../img/heart.png";
+
+const Hp = () => {
+  let count = 2;  
+
+  return (
+    <div>
+       <span className="energy">Energy: {count}</span>
+
+      <div style={{ display: "flex", gap: "0.1rem" }}>
+        {Array.from({ length: count }).map((_, index) => (
+          <img key={index} src={heart} alt="heart" width={35} height={35} />
+        ))}
+      
+      </div>
+    </div>
+  );
+};
 
 type Salary = {
     salary: number;
@@ -22,7 +40,7 @@ const KeyBid = ({ min, max }: KeyRandom) => {
         k.unshift(c)
     }
     return [k[0]," ",k[0]-k[1]]
-
+    // Отдать Дане на проработку
 };
 
 type WelcomeProps = {
@@ -41,11 +59,11 @@ const Progress =  ({progress}:ProgressBar,{salary}:Salary) => {
     let purpose = 2000000
     let purpose_percent = ((salary/purpose)*100)
     return (
-    <div className="progress_bar" style={{ color:"red", width: `${progress}%`, backgroundImage: `linear-gradient(90deg, black ${purpose_percent}%, white ${100 - purpose}%` }}>
+    <div className="progress_bar" style={{ color:"red", width: `${progress}%`, backgroundImage: `linear-gradient(90deg, #3CFFB9 ${purpose_percent}%, white ${100 - purpose}%` }}>
         
       
     </div>
   );
 }
 
-export { Welcome, Progress, SalaryMoney, KeyBid };
+export { Welcome, Progress, SalaryMoney, KeyBid, Hp };

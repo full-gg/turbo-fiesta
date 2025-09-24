@@ -1,18 +1,75 @@
+@font-face {
+    font-family: Gomepixel;
+    src: url(../fonts/GomePixel-ARJd7.otf);
+}
+
+@font-face {
+    font-family: Pixelated;
+    src: url(../fonts/PixelatedElegance.ttf);
+}
+
+@font-face {
+    font-family: Raster;
+    src: url(../fonts/RasterForgeRegular-JpBgm.ttf);
+}
+
 @media screen and (max-width: 480px) {
     * {
         margin: 0;
         padding: auto;
         box-sizing: border-box;
+        
+    }
+
+    html {
+        height: 100%;
     }
 
     body {
-        background: linear-gradient(#acabb3);
-        color: white
+        background: linear-gradient(#060698, #6088E4);
+        color: white;
+        
     }
+
+    a {
+        list-style: none;
+        color: white;
+    }
+    /* Название */
+
+    .title {
+        font-family: Pixelated;
+        font-size: 2.6rem;
+        display: flex;
+        justify-content: center;
+    }
+
 
     /* Секция прогресса */
     .progress_bar {
-        border: 1px solid red;
-        height: 20px;
+        border-radius: 2rem;
+        height: 1.2rem;
     }
+
+    /* Секция карты */
+    .map {
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    .map_title {
+        position: absolute;
+        font-family: Pixelated;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 3rem;
+        
+    }
+
+    /* Секция института */
+
+    
+
 }
