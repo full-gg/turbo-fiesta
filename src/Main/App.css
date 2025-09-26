@@ -1,6 +1,6 @@
 @font-face {
-    font-family: Gomepixel;
-    src: url(../fonts/GomePixel-ARJd7.otf);
+    font-family: Chava;
+    src: url(../fonts/Chava-Regular.otf);
 }
 
 @font-face {
@@ -44,7 +44,43 @@
         justify-content: center;
     }
 
+    /* Секция Профиля*/
 
+    .menu_grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr; 
+        grid-template-rows: 1fr 1fr;      
+        width:100%;
+        height: 100%;
+    }
+
+    .hp {
+        grid-column: 1;
+        grid-row: 1;  
+    }
+
+    .energy {
+        font-family: Chava;
+    }
+
+    .profile {
+        display: flex;
+        flex-direction: column;
+        grid-row: 1 / span 2;
+        align-items: center;
+    }
+
+    .profile_title {
+        font-family: Chava;
+        text-align: center;
+        font-size: 2rem;
+    }
+
+    .keybid_title {
+        font-family: Chava;
+        font-size: 1rem;
+        text-align: center;
+    }
     /* Секция прогресса */
     .progress_bar {
         border-radius: 2rem;
@@ -60,12 +96,12 @@
 
     .map_title {
         position: absolute;
-        font-family: Pixelated;
+        font-family: Chava;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 3rem;
-        
+        text-shadow: 4px 4px 0.5px rgb(0, 0, 0);
     }
 
     /* Секция института */

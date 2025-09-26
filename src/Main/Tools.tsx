@@ -1,12 +1,35 @@
-import { FC } from "react";
+import { FC,useEffect,useState } from "react";
+import "./App.css"
+import sendHp from "../Back-end/Back-end.tsx";
 import heart from "../img/heart.png";
 
-const Hp = () => {
-  let count = 2;  
+type HpProps = {
+  count: number;
+};
 
+
+const ShowCount = () => {
+  const [serverCount, setServerCount] = useState<number | null>(null);
+
+useEffect(() => {
+  fetch("http://localhost:3000")
+    .then((res) => res.json())
+    .then((data) => setServerCount(data.count))
+    .catch((err) => console.error("Ошибка при получении count:", err));
+}, [])
+
+  return <div>Значение count на бэке: {serverCount}</div>;
+};
+
+
+const Hp = ({ count }: HpProps) => {
+  useEffect(() => {
+    // отправляем hp на бэкенд при монтировании
+    sendHp(count);
+  }, [count]); 
   return (
     <div>
-       <span className="energy">Energy: {count}</span>
+       <span className="energy">Энергия: {count}</span>
 
       <div style={{ display: "flex", gap: "0.1rem" }}>
         {Array.from({ length: count }).map((_, index) => (
@@ -23,7 +46,7 @@ type Salary = {
 }
 
 const SalaryMoney: FC<Salary> = ({salary}) => {
-    return <h1>your salary is {salary}</h1>
+    return <span>your salary is {salary}</span>
 }
 
 type KeyRandom = {
@@ -34,12 +57,9 @@ type KeyRandom = {
 
 
 const KeyBid = ({ min, max }: KeyRandom) => {
-    let k = []
-    for (let i=0;i<2;i++){
-        let c = Math.floor(Math.random() * (max - min) + min)
-        k.unshift(c)
-    }
-    return [k[0]," ",k[0]-k[1]]
+  
+  let c = Math.floor(Math.random() * (max - min) + min)
+  return c
     // Отдать Дане на проработку
 };
 
@@ -48,7 +68,7 @@ type WelcomeProps = {
 }
 
 const Welcome: FC<WelcomeProps> = ({name}) => {
-    return <h1>Hi, {name}</h1>
+    return <span className="profile_title">{name}</span>
 }
 
 type ProgressBar = {
@@ -66,4 +86,4 @@ const Progress =  ({progress}:ProgressBar,{salary}:Salary) => {
   );
 }
 
-export { Welcome, Progress, SalaryMoney, KeyBid, Hp };
+export { Welcome, Progress, SalaryMoney, KeyBid, Hp,ShowCount };

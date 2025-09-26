@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { FC } from "react";
 import "../Main/App.css"
 import menu_map from '../img/menu_map.png'
-import {Welcome,Progress,SalaryMoney,KeyBid, Hp} from "./Tools.tsx";
+import main_profile from '../img/profile_img/main_profile.png'
+import {Welcome,Progress,SalaryMoney,KeyBid, Hp, ShowCount} from "./Tools.tsx";
 
 
 const App: FC = () => {
@@ -13,18 +14,23 @@ const App: FC = () => {
                 CAPITAL QUEST
             </div>
         </main>
-        <section>
-            <div>{Hp()}
-                
+        <section className="menu_grid">
+            <div className="hp"><Hp count={2} />  </div>
+        
+            <div className="profile">
+                <img src={main_profile} alt="Main Profile" style={{width:"11rem"}}/>
+                <Welcome name="Алексей" />
             </div>
-            <SalaryMoney salary={1500000} />
-            <div>{KeyBid({min:10,max:20})}
-               
-            </div>
-            assets
+            <div className="salary"><SalaryMoney salary={1500000} /></div>
+            <div className="keybid">
+                {KeyBid({min:10,max:20})}
+                <span className="keybid_title">Ключевая ставка</span>
+                </div>
+            <div className="assets">assets</div>
+  
         </section>
         <section>
-            <Welcome name="Алексей" />
+            
           
             {Progress({ progress: 100 }, { salary: 100000 })}
           
