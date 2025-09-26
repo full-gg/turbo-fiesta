@@ -16,7 +16,7 @@ const App: FC = () => {
         </main>
         <section className="menu_grid">
             <div className="hp"><Hp count={2} />  </div>
-        
+            <div><ShowCount /></div>
             <div className="profile">
                 <img src={main_profile} alt="Main Profile" style={{width:"11rem"}}/>
                 <Welcome name="Алексей" />

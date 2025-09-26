@@ -1,6 +1,6 @@
 const sendHp = async (count: number) => {
   try {
-    const response = await fetch("http://localhost:3000", {
+    const response = await fetch("http://localhost:3000/hp_update", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

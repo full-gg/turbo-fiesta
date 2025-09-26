@@ -12,7 +12,7 @@ const ShowCount = () => {
   const [serverCount, setServerCount] = useState<number | null>(null);
 
 useEffect(() => {
-  fetch("http://localhost:3000")
+  fetch("http://localhost:3000/hp_update")
     .then((res) => res.json())
     .then((data) => setServerCount(data.count))
     .catch((err) => console.error("Ошибка при получении count:", err));
