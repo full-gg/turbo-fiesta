@@ -11,7 +11,7 @@ const ShowCount = () => {
 	const [serverCount, setServerCount] = useState<number | null>(null);
 
 	useEffect(() => {
-		fetchApi('/hp_update')
+		fetchApi(`hp_update`, { method: 'GET' })
 			.then((data) => setServerCount(data.count))
 			.catch((err) => console.error('Ошибка при получении count:', err));
 	}, []);
@@ -22,7 +22,7 @@ const ShowCount = () => {
 const Hp = ({ count }: HpProps) => {
 	useEffect(() => {
 		// отправляем hp на бэкенд при монтировании
-		sendHp(count);
+		sendHp();
 	}, [count]);
 	return (
 		<div>

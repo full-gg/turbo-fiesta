@@ -10,14 +10,5 @@ export default defineConfig({
 	},
 	server: {
 		port: 3000,
-		proxy: {
-			'*': {
-				// Маршрут для вашего эндпоинта
-				target: `${process.env.VITE_BACKEND_URL}:${process.env.VITE_BACKEND_PORT}`, // Целевой сервер
-				changeOrigin: true, // Меняем origin на target (обязательно для CORS)
-				secure: false, // Если сервер без HTTPS (по умолчанию true)
-				rewrite: (path) => path, // Не переписываем путь (или настройте, если нужно)
-			},
-		},
 	},
 });

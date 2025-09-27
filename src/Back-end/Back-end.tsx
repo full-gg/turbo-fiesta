@@ -1,11 +1,7 @@
-const sendHp = async (count: number) => {
+const sendHp = async () => {
 	try {
-		const response = await fetchApi('/hp_update', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ count }),
+		const response = await fetchApi(`hp_update`, {
+			method: 'GET',
 		});
 
 		console.log('Ответ от бэка:', response);
@@ -16,18 +12,20 @@ const sendHp = async (count: number) => {
 
 export default sendHp;
 
-export const fetchApi = async (endPoint: Parameters<typeof fetch>[0], options?: Parameters<typeof fetch>[1]) => {
+export const fetchApi = async (endPoint: string, options?: Parameters<typeof fetch>[1]) => {
+	console.log(`http://${import.meta.env.VITE_BACKEND_URL || process.env.VITE_BACKEND_URL}:${import.meta.env.VITE_BACKEND_PORT || process.env.VITE_BACKEND_PORT}/${endPoint}`);
+
 	try {
-		const response = await fetch(endPoint, {
+		const response = await fetch(`https://${import.meta.env.VITE_BACKEND_URL || process.env.VITE_BACKEND_URL}:${import.meta.env.VITE_BACKEND_PORT || process.env.VITE_BACKEND_PORT}/${endPoint}`, {
 			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
 			...options,
+			headers: {
+				'Content-Type': 'application/json;charset=UTF-8',
+				...options?.headers,
+			},
 		});
 
 		const data = await response.json();
-		console.log(import.meta.env.VITE_BACKEND_URL, import.meta.env.VITE_BACKEND_PORT);
 		console.log('Ответ от бэка:', data);
 		return data;
 	} catch (err) {
