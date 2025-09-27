@@ -27,13 +27,13 @@ const App: FC = () => {
                 <span className="keybid_title">Ключевая ставка</span>
                 </div>
             <div className="assets">assets</div>
-  
+
         </section>
         <section>
-            
-          
+
+
             {Progress({ progress: 100 }, { salary: 100000 })}
-          
+
         </section>
         <section>
             <Link to="/Map">

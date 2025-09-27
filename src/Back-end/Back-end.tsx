@@ -1,6 +1,8 @@
+import { FULL_BACKEND_URL } from "./constants";
+
 const sendHp = async (count: number) => {
   try {
-    const response = await fetch("http://localhost:3000/hp_update", {
+    const response = await fetch(`${FULL_BACKEND_URL}/hp_update`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
