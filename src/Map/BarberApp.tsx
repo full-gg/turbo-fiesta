@@ -52,7 +52,7 @@ const ProfileImage = [
 ];
 
 const ChangePhoto: FC = () => {
-	const [index, setIndex] = useState(0);
+	const [index] = useState(0);
 
 	return (
 		<img
