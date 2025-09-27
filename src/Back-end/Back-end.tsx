@@ -27,6 +27,7 @@ export const fetchApi = async (endPoint: Parameters<typeof fetch>[0], options?: 
 		});
 
 		const data = await response.json();
+		console.log(import.meta.env.VITE_BACKEND_URL, import.meta.env.VITE_BACKEND_PORT);
 		console.log('Ответ от бэка:', data);
 		return data;
 	} catch (err) {
