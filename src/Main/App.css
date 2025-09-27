@@ -1,111 +1,106 @@
 @font-face {
-    font-family: Chava;
-    src: url(../fonts/Chava-Regular.otf);
+	font-family: Chava;
+	src: url(../fonts/Chava-Regular.otf);
 }
 
 @font-face {
-    font-family: Pixelated;
-    src: url(../fonts/PixelatedElegance.ttf);
+	font-family: Pixelated;
+	src: url(../fonts/PixelatedElegance.ttf);
 }
 
 @font-face {
-    font-family: Raster;
-    src: url(../fonts/RasterForgeRegular-JpBgm.ttf);
+	font-family: Raster;
+	src: url(../fonts/RasterForgeRegular-JpBgm.ttf);
 }
 
 @media screen and (max-width: 480px) {
-    * {
-        margin: 0;
-        padding: auto;
-        box-sizing: border-box;
-        
-    }
+	* {
+		margin: 0;
+		padding: auto;
+		box-sizing: border-box;
+	}
 
-    html {
-        height: 100%;
-    }
+	html {
+		height: 100%;
+	}
 
-    body {
-        background: linear-gradient(#060698, #6088E4);
-        color: white;
-        
-    }
+	body {
+		background: linear-gradient(#060698, #6088e4);
+		color: white;
+	}
 
-    a {
-        list-style: none;
-        color: white;
-    }
-    /* Название */
+	a {
+		list-style: none;
+		color: white;
+	}
+	/* Название */
 
-    .title {
-        font-family: Pixelated;
-        font-size: 2.6rem;
-        display: flex;
-        justify-content: center;
-    }
+	.title {
+		font-family: Pixelated;
+		font-size: 2.6rem;
+		display: flex;
+		justify-content: center;
+	}
 
-    /* Секция Профиля*/
+	/* Секция Профиля*/
 
-    .menu_grid {
-        display: grid;
-        grid-template-columns: 1fr 2fr 1fr; 
-        grid-template-rows: 1fr 1fr;      
-        width:100%;
-        height: 100%;
-    }
+	.menu_grid {
+		display: grid;
+		grid-template-columns: 1fr 2fr 1fr;
+		grid-template-rows: 1fr 1fr;
+		width: 100%;
+		height: 100%;
+	}
 
-    .hp {
-        grid-column: 1;
-        grid-row: 1;  
-    }
+	.hp {
+		grid-column: 1;
+		grid-row: 1;
+	}
 
-    .energy {
-        font-family: Chava;
-    }
+	.energy {
+		font-family: Chava;
+	}
 
-    .profile {
-        display: flex;
-        flex-direction: column;
-        grid-row: 1 / span 2;
-        align-items: center;
-    }
+	.profile {
+		display: flex;
+		flex-direction: column;
+		grid-row: 1 / span 2;
+		align-items: center;
+	}
 
-    .profile_title {
-        font-family: Chava;
-        text-align: center;
-        font-size: 2rem;
-    }
+	.profile_title {
+		font-family: Chava;
+		text-align: center;
+		font-size: 2rem;
+	}
 
-    .keybid_title {
-        font-family: Chava;
-        font-size: 1rem;
-        text-align: center;
-    }
-    /* Секция прогресса */
-    .progress_bar {
-        border-radius: 2rem;
-        height: 1.2rem;
-    }
+	.keybid_title {
+		font-family: Chava;
+		font-size: 1rem;
+		text-align: center;
+	}
+	/* Секция прогресса */
+	.progress_bar {
+		border-radius: 2rem;
+		height: 1.2rem;
+	}
 
-    /* Секция карты */
-    .map {
-        position: relative;
-        display: flex;
-        justify-content: center;
-    }
+	/* Секция карты */
+	.map {
+		position: relative;
+		display: flex;
+		justify-content: center;
+	}
 
-    .map_title {
-        position: absolute;
-        font-family: Chava;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 3rem;
-        text-shadow: 4px 4px 0.5px rgb(0, 0, 0);
-    }
+	.map_title {
+		position: absolute;
+		font-family: Chava;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size: 3rem;
+		text-shadow: 4px 4px 0.5px rgb(0, 0, 0);
+	}
 
-    /* Секция института */
-
-    
-
+	/* Секция института */
 }
