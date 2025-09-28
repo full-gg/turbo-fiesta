@@ -1,18 +1,35 @@
-const sendHp = async (count: number) => {
-  try {
-    const response = await fetch("http://localhost:3000/hp_update", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ count }),
-    });
+const sendHp = async () => {
+	try {
+		const response = await fetchApi(`hp_update`, {
+			method: 'GET',
+		});
 
-    const data = await response.json();
-    console.log("Ответ от бэка:", data);
-  } catch (err) {
-    console.error("Ошибка при отправке hp:", err);
-  }
+		console.log('Ответ от бэка:', response);
+	} catch (err) {
+		console.error('Ошибка при отправке hp:', err);
+	}
 };
 
-export default sendHp
+export default sendHp;
+
+export const fetchApi = async (endPoint: string, options?: Parameters<typeof fetch>[1]) => {
+	console.log(`http://${import.meta.env.VITE_BACKEND_URL || process.env.VITE_BACKEND_URL}:${import.meta.env.VITE_BACKEND_PORT || process.env.VITE_BACKEND_PORT}/${endPoint}`);
+
+	try {
+		const response = await fetch(`https://${import.meta.env.VITE_BACKEND_URL || process.env.VITE_BACKEND_URL}:${import.meta.env.VITE_BACKEND_PORT || process.env.VITE_BACKEND_PORT}/${endPoint}`, {
+			method: 'POST',
+			...options,
+			headers: {
+				'Content-Type': 'application/json;charset=UTF-8',
+				...options?.headers,
+			},
+		});
+
+		const data = await response.json();
+		console.log('Ответ от бэка:', data);
+		return data;
+	} catch (err) {
+		console.error('Ошибка при отправке hp:', err);
+		return null;
+	}
+};
