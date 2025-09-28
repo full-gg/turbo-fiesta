@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app: {{ .Release.Name }}
+data:
+  BACKEND_URL: {{ .values.environment.backend_config.URL }}
+  BACKEND_PORT: {{ .values.environment.backend_config.PORT }}
