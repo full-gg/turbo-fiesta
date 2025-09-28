@@ -5,5 +5,5 @@ metadata:
   labels:
     app: {{ .Release.Name }}
 data:
-  BACKEND_URL: {{ .Values.backend_config.URL }}
+  BACKEND_URL: "{{ .Values.backend_config.URL }}"
   BACKEND_PORT: {{ .Values.backend_config.PORT }}
