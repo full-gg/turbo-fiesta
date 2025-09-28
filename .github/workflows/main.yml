@@ -1,10 +1,10 @@
-name: Telegram Bot CI
+name: Build and deploy
 
 on:
   push:
-    branches: master
+    branches: main
   pull_request:
-    branches: master
+    branches: main
 
 env:
   IMAGE_NAME: chmonya777/fullggfront
