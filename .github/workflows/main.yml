@@ -41,4 +41,4 @@ jobs:
           --namespace=$NAMESPACE \
           -f .helm/values.yaml
     - name: Wait for deploy
-      run: kubectl rollout status deployment $RELEASE_NAME --timeout=300s
+      run: kubectl rollout status deployment $RELEASE_NAME --namespace=$NAMESPACE --timeout=300s
