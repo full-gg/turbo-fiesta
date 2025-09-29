@@ -7,6 +7,15 @@ export default defineConfig({
 	plugins: [react()],
 	build: {
 		outDir: path.resolve(__dirname, 'build'),
+        minify: 'esbuild',
+        sourcemap: false,
+        rollupOptions: {
+          output: {
+            manualChunks: {
+              vendor: ['react', 'react-dom'],
+            },
+          },
+        },
 	},
 	server: {
 	    host: '0.0.0.0',
@@ -16,4 +25,5 @@ export default defineConfig({
         cors: true,
         hmr: false,
 	},
+    base: '/',
 });
