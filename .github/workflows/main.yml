@@ -15,8 +15,8 @@ jobs:
   build:
     runs-on: raspberrypi
     env:
-      VITE_BACKEND_URL: "${{ env.VITE_BACKEND_URL }}"
-      VITE_BACKEND_PORT: "${{ env.VITE_BACKEND_PORT }}"
+      VITE_BACKEND_URL: "${{ vars.VITE_BACKEND_URL }}"
+      VITE_BACKEND_PORT: "${{ vars.VITE_BACKEND_PORT }}"
     steps:
     - uses: actions/checkout@v4
     - name: Build image
