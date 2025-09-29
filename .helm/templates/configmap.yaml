@@ -7,3 +7,5 @@ metadata:
 data:
   BACKEND_URL: "{{ .Values.backend_config.URL }}"
   BACKEND_PORT: "{{ .Values.backend_config.PORT }}"
+  VITE_BACKEND_URL: "{{ .Values.backend_config.URL }}"
+  VITE_BACKEND_PORT: "{{ .Values.backend_config.PORT }}"

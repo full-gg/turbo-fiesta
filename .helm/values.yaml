@@ -1,7 +1,8 @@
 backend_config:
-  URL: fulggback
-  PORT: 6969
-dns:
-  name: true-steady-stinkbug.ngrok-free.app
+  URL: true-steady-stinkbug.ngrok-free.app/api
+  PORT: 443
+web:
+  dns: true-steady-stinkbug.ngrok-free.app
+  port: 80
 image:
   name: fullggfront
