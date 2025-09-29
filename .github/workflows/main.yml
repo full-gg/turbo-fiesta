@@ -14,7 +14,7 @@ env:
 jobs:
   build:
     runs-on: raspberrypi
-    environment: Productions
+    environment: Production
     steps:
     - uses: actions/checkout@v4
     - name: Build image
