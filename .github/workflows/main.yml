@@ -19,6 +19,9 @@ jobs:
       VITE_BACKEND_PORT: "${{ vars.VITE_BACKEND_PORT }}"
     steps:
     - uses: actions/checkout@v4
+    - name: Check envs
+      run: |
+        echo $VITE_BACKEND_URL $VITE_BACKEND_PORT "${{ vars.VITE_BACKEND_URL }}" "${{ vars.VITE_BACKEND_PORT }}"
     - name: Build image
       run: |
         sudo podman image build --env VITE_BACKEND_URL=$VITE_BACKEND_URL --env VITE_BACKEND_PORT=$VITE_BACKEND_PORT -t $IMAGE_NAME:$GITHUB_SHA .
