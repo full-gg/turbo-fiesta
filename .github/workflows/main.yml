@@ -15,13 +15,13 @@ jobs:
   build:
     runs-on: raspberrypi
     env:
-      VITE_BACKEND_URL: "${{ vars.VITE_BACKEND_URL }}"
-      VITE_BACKEND_PORT: "${{ vars.VITE_BACKEND_PORT }}"
+      VITE_BACKEND_URL: "${{ vars.Production.VITE_BACKEND_URL }}"
+      VITE_BACKEND_PORT: "${{ vars.Production.VITE_BACKEND_PORT }}"
     steps:
     - uses: actions/checkout@v4
     - name: Check envs
       run: |
-        echo $VITE_BACKEND_URL $VITE_BACKEND_PORT "${{ vars.VITE_BACKEND_URL }}" "${{ vars.VITE_BACKEND_PORT }}"
+        echo $VITE_BACKEND_URL $VITE_BACKEND_PORT "${{ vars.VITE_BACKEND_URL }}" "${{ vars.VITE_BACKEND_PORT }}" "${{ vars.Production.VITE_BACKEND_URL }}"  "${{ vars.Production.VITE_BACKEND_PORT }}"
     - name: Build image
       run: |
         sudo podman image build --env VITE_BACKEND_URL=$VITE_BACKEND_URL --env VITE_BACKEND_PORT=$VITE_BACKEND_PORT -t $IMAGE_NAME:$GITHUB_SHA .
@@ -34,17 +34,3 @@ jobs:
     - name: Delete image locally
       run: |
         sudo podman rmi $IMAGE_NAME:$GITHUB_SHA
-  deploy:
-    needs: build
-    runs-on: raspberrypi
-    steps:
-    - name: Apply deployment
-      run: |
-        helm secrets upgrade $RELEASE_NAME .helm \
-          --install \
-          --set-string image.name=$IMAGE_NAME \
-          --set-string image.tag=$GITHUB_SHA \
-          --namespace=$NAMESPACE \
-          -f .helm/values.yaml
-    - name: Wait for deploy
-      run: kubectl rollout status deployment $RELEASE_NAME --namespace=$NAMESPACE --timeout=300s
