@@ -23,6 +23,10 @@ export const fetchApi = async (userName: string, endPoint: string, options?: Par
 			},
 		});
 
+		if (response.status === 201) {
+			return true;
+		}
+
 		const data = await response.json();
 		console.log(data);
 
