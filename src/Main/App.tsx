@@ -9,7 +9,7 @@ import { fetchApi } from '../Back-end/Back-end.tsx';
 
 const getUserNameFromLocal = () => localStorage.getItem(USER_NAME_KEY);
 
-const AppContext = createContext<Record<string, [unknown, React.Dispatch<React.SetStateAction<unknown>>]>>({});
+export const AppContext = createContext<Record<string, [unknown, React.Dispatch<React.SetStateAction<unknown>>]>>({});
 
 const App: FC = () => {
 	const [isAuth, setIsAuth] = useState(Boolean(getUserNameFromLocal()?.length));
