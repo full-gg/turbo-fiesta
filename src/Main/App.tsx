@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { createContext, useEffect, useMemo, useState, type FC } from 'react';
 import './App.css';
 import menu_map from '../img/menu_map.png';
@@ -55,6 +55,8 @@ const App: FC = () => {
 					setMortgageRate(response);
 				}
 			})();
+		} else {
+			Navigate({ replace: true, to: '/' });
 		}
 	}, [isAuth]);
 
