@@ -36,25 +36,27 @@ const App: FC = () => {
 	);
 
 	useEffect(() => {
-		(async () => {
-			const response = await fetchApi(userName, 'salary', { method: 'GET' });
-			if (response) {
-				setSalary(response);
-			}
-		})();
-		(async () => {
-			const response = await fetchApi(userName, 'hp', { method: 'GET' });
-			if (response) {
-				setHp(response);
-			}
-		})();
-		(async () => {
-			const response = await fetchApi(userName, 'mortgage_rate', { method: 'GET' });
-			if (response) {
-				setMortgageRate(response);
-			}
-		})();
-	}, []);
+		if (isAuth) {
+			(async () => {
+				const response = await fetchApi(userName, 'salary', { method: 'GET' });
+				if (response) {
+					setSalary(response);
+				}
+			})();
+			(async () => {
+				const response = await fetchApi(userName, 'hp', { method: 'GET' });
+				if (response) {
+					setHp(response);
+				}
+			})();
+			(async () => {
+				const response = await fetchApi(userName, 'mortgage_rate', { method: 'GET' });
+				if (response) {
+					setMortgageRate(response);
+				}
+			})();
+		}
+	}, [isAuth]);
 
 	if (!isAuth) {
 		return (
