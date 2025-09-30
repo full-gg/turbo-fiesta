@@ -1,6 +1,6 @@
 const sendHp = async (userName: string) => {
 	try {
-		const response = await fetchApi(userName, `hp_update`, {
+		const response = await fetchApi(userName, `hp`, {
 			method: 'GET',
 		});
 
@@ -23,9 +23,9 @@ export const fetchApi = async (userName: string, endPoint: string, options?: Par
 			},
 		});
 
-		if (response.status.toString().startsWith('2')) {
-			return true;
-		}
+		// if (response.status.toString().startsWith('2')) {
+		// 	return true;
+		// }
 
 		const data = await response.json();
 		console.log(data);
