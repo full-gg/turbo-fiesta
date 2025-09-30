@@ -23,7 +23,7 @@ export const fetchApi = async (userName: string, endPoint: string, options?: Par
 			},
 		});
 
-		if (response.status === 201) {
+		if (response.status.toString().startsWith('2')) {
 			return true;
 		}
 
