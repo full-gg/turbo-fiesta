@@ -24,6 +24,8 @@ export const fetchApi = async (userName: string, endPoint: string, options?: Par
 		});
 
 		const data = await response.json();
+		console.log(data);
+
 		console.log('Ответ от бэка:', data);
 		return data;
 	} catch (err) {
