@@ -23,9 +23,9 @@ export const fetchApi = async (userName: string, endPoint: string, options?: Par
 			},
 		});
 
-		// if (response.status.toString().startsWith('2')) {
-		// 	return true;
-		// }
+		if (response.status.toString().startsWith('2') && endPoint === 'auth') {
+			return true;
+		}
 
 		const data = await response.json();
 		console.log(data);
