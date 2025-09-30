@@ -1,22 +1,10 @@
-import { type FC, useEffect, useState } from 'react';
+import { type FC, useEffect } from 'react';
 import './App.css';
-import sendHp, { fetchApi } from '../Back-end/Back-end.tsx';
+import sendHp from '../Back-end/Back-end.tsx';
 import heart from '../img/heart.png';
 
 type HpProps = {
 	count: number;
-};
-
-const ShowCount = () => {
-	const [serverCount, setServerCount] = useState<number | null>(null);
-
-	useEffect(() => {
-		fetchApi(`hp_update`, { method: 'GET' })
-			.then((data) => setServerCount(data.count))
-			.catch((err) => console.error('Ошибка при получении count:', err));
-	}, []);
-
-	return <div>Значение count на бэке: {serverCount}</div>;
 };
 
 const Hp = ({ count }: HpProps) => {
@@ -26,7 +14,7 @@ const Hp = ({ count }: HpProps) => {
 	}, [count]);
 	return (
 		<div>
-			<span className='energy'>Энергия: {count}</span>
+			<span className='energy'>Энергия:</span>
 
 			<div style={{ display: 'flex', gap: '0.1rem' }}>
 				{Array.from({ length: count }).map((_, index) => (
@@ -48,7 +36,12 @@ type Salary = {
 };
 
 const SalaryMoney: FC<Salary> = ({ salary }) => {
-	return <span>your salary is {salary}</span>;
+	return (
+		<>
+			<span>Зарплата: </span>
+			<div>{salary}</div>
+		</>
+	);
 };
 
 type KeyRandom = {
@@ -85,4 +78,4 @@ const Progress = ({ progress }: ProgressBar, { salary }: Salary) => {
 	);
 };
 
-export { Welcome, Progress, SalaryMoney, KeyBid, Hp, ShowCount };
+export { Welcome, Progress, SalaryMoney, KeyBid, Hp };

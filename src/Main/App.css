@@ -13,94 +13,200 @@
 	src: url(../fonts/RasterForgeRegular-JpBgm.ttf);
 }
 
-@media screen and (max-width: 480px) {
-	* {
-		margin: 0;
-		padding: auto;
-		box-sizing: border-box;
-	}
-
-	html {
-		height: 100%;
-	}
-
-	body {
-		background: linear-gradient(#060698, #6088e4);
-		color: white;
-	}
-
-	a {
-		list-style: none;
-		color: white;
-	}
-	/* Название */
-
-	.title {
-		font-family: Pixelated;
-		font-size: 2.6rem;
-		display: flex;
-		justify-content: center;
-	}
-
-	/* Секция Профиля*/
-
-	.menu_grid {
-		display: grid;
-		grid-template-columns: 1fr 2fr 1fr;
-		grid-template-rows: 1fr 1fr;
-		width: 100%;
-		height: 100%;
-	}
-
-	.hp {
-		grid-column: 1;
-		grid-row: 1;
-	}
-
-	.energy {
-		font-family: Chava;
-	}
-
-	.profile {
-		display: flex;
-		flex-direction: column;
-		grid-row: 1 / span 2;
-		align-items: center;
-	}
-
-	.profile_title {
-		font-family: Chava;
-		text-align: center;
-		font-size: 2rem;
-	}
-
-	.keybid_title {
-		font-family: Chava;
-		font-size: 1rem;
-		text-align: center;
-	}
-	/* Секция прогресса */
-	.progress_bar {
-		border-radius: 2rem;
-		height: 1.2rem;
-	}
-
-	/* Секция карты */
-	.map {
-		position: relative;
-		display: flex;
-		justify-content: center;
-	}
-
-	.map_title {
-		position: absolute;
-		font-family: Chava;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		font-size: 3rem;
-		text-shadow: 4px 4px 0.5px rgb(0, 0, 0);
-	}
-
-	/* Секция института */
+body {
+	margin: 0;
+	display: grid;
+	place-content: center;
+	height: 100vh;
+	font-family: Chava;
+	touch-action: manipulation;
 }
+
+.content {
+	max-width: 400px;
+	max-height: 700px;
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+}
+
+.authWrapper {
+	width: 100%;
+	height: 100%;
+	place-content: center;
+	display: grid;
+}
+
+.authModal {
+	background-color: #524f03;
+	box-shadow:
+		10px 0 #ded938bc,
+		-10px 0 #ded938bc,
+		0 10px #ded938bc,
+		0 -10px #ded938bc;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 15px;
+}
+
+.authHeader {
+}
+
+.authInput {
+	width: 100%;
+	font-size: 14px;
+	color: #ded838; /* ярко-зеленый цвет, как в ретро-терминалах */
+	background-color: #000000; /* черный фон */
+	/* border: 4px solid #ded838; толстая пиксельная рамка */
+	outline: none;
+	padding: 8px 12px;
+	box-sizing: border-box;
+	image-rendering: pixelated; /* для четкости пикселей */
+	letter-spacing: 2px; /* увеличенный межбуквенный интервал */
+	box-shadow:
+		1px 0 #ded838,
+		-1px 0 #ded838,
+		0 1px #ded838,
+		0 -1px #ded838;
+	text-shadow:
+		1px 0 #ded838,
+		-1px 0 #ded838,
+		0 1px #ded838,
+		0 -1px #ded838; /* имитация пиксельного свечения */
+	border-radius: 0; /* без скруглений */
+	caret-color: #ded838;
+}
+
+.authInput::placeholder {
+	color: #e3dd3c93;
+	opacity: 1;
+}
+
+.pixelButton {
+	color: #ded838;
+	background-color: #000000;
+	border: 4px solid #ded838;
+	padding: 12px 24px;
+	cursor: pointer;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	box-sizing: border-box;
+	user-select: none;
+	outline: none;
+	transition:
+		background-color 0.1s,
+		color 0.1s;
+	border-radius: 0;
+	box-shadow: 4px 4px 0 #e3dd3c93;
+	position: relative;
+}
+.pixelButton:hover {
+	background-color: #007700;
+	color: #00ff00;
+}
+.pixelButton:active {
+	box-shadow: none;
+	top: 4px;
+	left: 4px;
+}
+
+/* @media screen and (max-width: 480px) { */
+*:not(input) {
+	/* margin: 0;
+	padding: auto; */
+	box-sizing: border-box;
+}
+
+/* html {
+	height: 100%;
+} */
+
+body {
+	background: linear-gradient(#060698, #6088e4);
+	color: white;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+/* a {
+	list-style: none;
+	color: white;
+} */
+/* Название */
+
+.title {
+	font-family: Pixelated;
+	font-size: 2rem;
+	display: flex;
+	justify-content: center;
+}
+
+/* Секция Профиля*/
+
+.menu_grid {
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr;
+	grid-template-rows: 1fr 1fr;
+}
+
+.mainMenu {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.hp {
+	grid-column: 1;
+	grid-row: 1;
+}
+
+.energy {
+	font-family: Chava;
+}
+
+.profile {
+	display: flex;
+	flex-direction: column;
+	grid-row: 1 / span 2;
+	align-items: center;
+}
+
+.profile_title {
+	font-family: Chava;
+	text-align: center;
+	font-size: 2rem;
+}
+
+.keybid_title {
+	font-family: Chava;
+	font-size: 1rem;
+	text-align: center;
+}
+/* Секция прогресса */
+.progress_bar {
+	border-radius: 2rem;
+	height: 1.2rem;
+}
+
+/* Секция карты */
+.map {
+	position: relative;
+	display: flex;
+	justify-content: center;
+}
+
+.map_title {
+	position: absolute;
+	font-family: Chava;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 3rem;
+	text-shadow: 4px 4px 0.5px rgb(0, 0, 0);
+}
+
+/* Секция института */
+/* } */
