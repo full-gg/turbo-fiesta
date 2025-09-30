@@ -178,6 +178,7 @@ body {
 	font-family: Chava;
 	text-align: center;
 	font-size: 2rem;
+	overflow-wrap: anywhere;
 }
 
 .keybid_title {
