@@ -1,41 +1,127 @@
-import React from 'react';
+import React, { createContext, useEffect, useMemo, useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import Map from './Map/Map.tsx';
 import Bank from './Map/Bank.tsx';
 import Institute from './Map/Institute.tsx';
 import Barber from './Map/Barber.tsx';
 import App from './Main/App.tsx';
+import { USER_NAME_KEY } from './constants.ts';
+import { fetchApi } from './Back-end/Back-end.tsx';
 
-const MainNavigation = () => (
-	<Router>
-		<Routes>
-			<Route
-				path='/'
-				element={<App />}
-			/>
-			<Route
-				path='/Map'
-				element={<Map />}
-			/>
-			<Route
-				path='/Bank'
-				element={<Bank />}
-			/>
-			<Route
-				path='/Barber'
-				element={<Barber />}
-			/>
-			<Route
-				path='/Institute'
-				element={<Institute />}
-			/>
-		</Routes>
-	</Router>
-);
+export const AppContext = createContext<Record<string, [unknown, React.Dispatch<React.SetStateAction<unknown>>]>>({});
+
+const getUserNameFromLocal = () => localStorage.getItem(USER_NAME_KEY);
+
+const MainNavigation = () => {
+	const [isAuth, setIsAuth] = useState(Boolean(getUserNameFromLocal()?.length));
+	const [userName, setUserName] = useState(getUserNameFromLocal() ?? '');
+	const [salary, setSalary] = useState<number>(0);
+	const [mortgageRate, setMortgageRate] = useState<number>(0);
+	const [hp, setHp] = useState<number>(0);
+	const location = useLocation();
+	const navigate = useNavigate();
+
+	const checkUserName = async () => {
+		const response = await fetchApi(userName, 'auth', { method: 'POST', body: JSON.stringify({ user_id: userName }) });
+		if (response) {
+			setIsAuth(true);
+		}
+	};
+
+	const context = useMemo(
+		() => ({
+			userName: [userName, setUserName] as [unknown, React.Dispatch<React.SetStateAction<unknown>>],
+			salary: [salary, setSalary] as [unknown, React.Dispatch<React.SetStateAction<unknown>>],
+			mortgageRate: [mortgageRate, setMortgageRate] as [unknown, React.Dispatch<React.SetStateAction<unknown>>],
+			hp: [hp, setHp] as [unknown, React.Dispatch<React.SetStateAction<unknown>>],
+			isAuth: [isAuth, setIsAuth] as [unknown, React.Dispatch<React.SetStateAction<unknown>>],
+		}),
+		[userName, salary, mortgageRate, hp, isAuth],
+	);
+
+	useEffect(() => {
+		if (isAuth) {
+			(async () => {
+				const response = await fetchApi(userName, 'salary', { method: 'GET' });
+				if (response) {
+					setSalary(response);
+				}
+			})();
+			(async () => {
+				const response = await fetchApi(userName, 'hp', { method: 'GET' });
+				if (response) {
+					setHp(response);
+				}
+			})();
+			(async () => {
+				const response = await fetchApi(userName, 'mortgage_rate', { method: 'GET' });
+				if (response) {
+					setMortgageRate(response);
+				}
+			})();
+		} else {
+			navigate('/', { replace: true });
+		}
+	}, [isAuth, location.pathname]);
+
+	if (!isAuth) {
+		return (
+			<AppContext value={context}>
+				<div className='content'>
+					<div className='authWrapper'>
+						<div className='authModal'>
+							<h3 className='authHeader'>Введите имя пользователя</h3>
+							<input
+								className='authInput'
+								value={userName}
+								onChange={(event) => setUserName(event.target.value)}
+							/>
+							<button
+								className='pixelButton'
+								onClick={checkUserName}
+							>
+								ВОЙТИ
+							</button>
+						</div>
+					</div>
+				</div>
+			</AppContext>
+		);
+	}
+
+	return (
+		<AppContext value={context}>
+			<Routes>
+				<Route
+					path='/'
+					element={<App />}
+				/>
+				<Route
+					path='/Map'
+					element={<Map />}
+				/>
+				<Route
+					path='/Bank'
+					element={<Bank />}
+				/>
+				<Route
+					path='/Barber'
+					element={<Barber />}
+				/>
+				<Route
+					path='/Institute'
+					element={<Institute />}
+				/>
+			</Routes>
+		</AppContext>
+	);
+};
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
 	<React.StrictMode>
-		<MainNavigation />
+		<Router>
+			<MainNavigation />
+		</Router>
 	</React.StrictMode>,
 );

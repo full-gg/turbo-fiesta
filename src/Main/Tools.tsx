@@ -1,19 +1,12 @@
-import { type FC, useContext, useEffect } from 'react';
+import { type FC } from 'react';
 import './App.css';
-import sendHp from '../Back-end/Back-end.tsx';
 import heart from '../img/heart.png';
-import { AppContext } from './App.tsx';
 
 type HpProps = {
 	count: number;
 };
 
 const Hp = ({ count }: HpProps) => {
-	const context = useContext(AppContext);
-	useEffect(() => {
-		// отправляем hp на бэкенд при монтировании
-		sendHp(context.userName[0] as string);
-	}, [count]);
 	return (
 		<div>
 			<span className='energy'>Энергия:</span>
