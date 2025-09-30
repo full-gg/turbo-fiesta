@@ -60,6 +60,8 @@ const MainNavigation = () => {
 					setMortgageRate(response);
 				}
 			})();
+			fetchApi(userName, 'questions', { method: 'GET' });
+			fetchApi(userName, 'lectures', { method: 'GET' });
 		} else {
 			navigate('/', { replace: true });
 		}
@@ -92,28 +94,30 @@ const MainNavigation = () => {
 
 	return (
 		<AppContext value={context}>
-			<Routes>
-				<Route
-					path='/'
-					element={<App />}
-				/>
-				<Route
-					path='/Map'
-					element={<Map />}
-				/>
-				<Route
-					path='/Bank'
-					element={<Bank />}
-				/>
-				<Route
-					path='/Barber'
-					element={<Barber />}
-				/>
-				<Route
-					path='/Institute'
-					element={<Institute />}
-				/>
-			</Routes>
+			<div className='content'>
+				<Routes>
+					<Route
+						path='/'
+						element={<App />}
+					/>
+					<Route
+						path='/Map'
+						element={<Map />}
+					/>
+					<Route
+						path='/Bank'
+						element={<Bank />}
+					/>
+					<Route
+						path='/Barber'
+						element={<Barber />}
+					/>
+					<Route
+						path='/Institute'
+						element={<Institute />}
+					/>
+				</Routes>
+			</div>
 		</AppContext>
 	);
 };

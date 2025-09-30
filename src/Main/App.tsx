@@ -9,7 +9,7 @@ import { AppContext } from '../main.tsx';
 const App: FC = () => {
 	const context = useContext(AppContext);
 	return (
-		<div className='content'>
+		<>
 			<div className='mainMenu'>
 				<main>
 					<div className='title'>CAPITAL QUEST</div>
@@ -48,7 +48,7 @@ const App: FC = () => {
 					</Link>
 				</section>
 			</div>
-		</div>
+		</>
 	);
 };
 

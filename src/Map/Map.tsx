@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import map from '../img/map.png';
 import bank from '../img/bank.png';
 import barber from '../img/barber.png';
 import institute from '../img/institute.png';
@@ -7,11 +6,7 @@ import home from '../img/home.png';
 
 const Map = () => {
 	return (
-		<div>
-			<img
-				src={map}
-				alt=''
-			/>
+		<div className='mapWrapper'>
 			<Link to='/Bank'>
 				<img
 					src={bank}
