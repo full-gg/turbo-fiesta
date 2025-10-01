@@ -15,29 +15,37 @@
 
 body {
 	margin: 0;
-	display: grid;
-	place-content: center;
 	height: 100vh;
 	font-family: Chava;
 	touch-action: manipulation;
+	font-weight: 100;
+}
+
+#root {
+	height: 100vh;
 }
 
 .content {
-	max-width: 400px;
-	max-height: 700px;
 	width: 100vw;
 	height: 100vh;
 	position: relative;
+	display: flex;
+	justify-content: center;
 }
 
-.authWrapper {
+.content > div {
+	max-width: 700px;
+}
+
+.wrapper {
 	width: 100%;
 	height: 100%;
 	place-content: center;
 	display: grid;
+	position: fixed;
 }
 
-.authModal {
+.modal {
 	background-color: #524f03;
 	box-shadow:
 		10px 0 #ded938bc,
@@ -70,11 +78,6 @@ body {
 		-1px 0 #ded838,
 		0 1px #ded838,
 		0 -1px #ded838;
-	text-shadow:
-		1px 0 #ded838,
-		-1px 0 #ded838,
-		0 1px #ded838,
-		0 -1px #ded838; /* имитация пиксельного свечения */
 	border-radius: 0; /* без скруглений */
 	caret-color: #ded838;
 }
@@ -112,6 +115,10 @@ body {
 	left: 4px;
 }
 
+.pixelButton:disabled {
+	filter: grayscale(1);
+}
+
 /* @media screen and (max-width: 480px) { */
 *:not(input) {
 	/* margin: 0;
@@ -127,6 +134,11 @@ body {
 	background: linear-gradient(#060698, #6088e4);
 	color: white;
 	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+*:not(li) {
+	overflow: hidden;
 	background-size: 100% 100%;
 }
 
@@ -213,7 +225,27 @@ body {
 	width: 100%;
 	height: 100%;
 	background-image: url(../img/map.png);
+	position: relative;
 }
 
 /* Секция института */
 /* } */
+
+.institute_main {
+	background-image: url(../img/institute_office.png);
+	background-repeat: no-repeat;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 100%;
+}
+
+@media (pointer: coarse) and (hover: none) {
+	* {
+		cursor: none;
+	}
+}
+
+.textShadow {
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}

@@ -52,30 +52,29 @@ const ProfileImage = [
 ];
 
 const ChangePhoto: FC = () => {
-  const [index,setIndex] = useState(0);
-  
-  
-  return (
-    <>
-    <img
-      src={ProfileImage[index].ImageUrl}
-      alt=''
-	  
-    />
-	<div className="Barber_grid" style={{display:"grid", gridTemplateColumns:"1fr 1fr"}}>
-        {ProfileImage.map((item,i) => (
-    	<div key={item.id}>
-      	<img 
-			src={item.ImageUrl}
-			onClick={() => setIndex(i)}
-		/>
-    </div>
-		  
-        ))}
-    	</div>
+	const [index, setIndex] = useState(0);
 
-    </>
-  );
+	return (
+		<>
+			<img
+				src={ProfileImage[index].ImageUrl}
+				alt=''
+			/>
+			<div
+				className='Barber_grid'
+				style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}
+			>
+				{ProfileImage.map((item, i) => (
+					<div key={item.id}>
+						<img
+							src={item.ImageUrl}
+							onClick={() => setIndex(i)}
+						/>
+					</div>
+				))}
+			</div>
+		</>
+	);
 };
 
 export default ChangePhoto;

@@ -1,8 +1,12 @@
 const sendHp = async (userName: string) => {
 	try {
-		const response = await fetchApi(userName, `hp`, {
-			method: 'GET',
-		});
+		const response = await fetchApi(
+			`hp`,
+			{
+				method: 'GET',
+			},
+			`?user_id=${userName}`,
+		);
 
 		console.log('Ответ от бэка:', response);
 	} catch (err) {
@@ -12,13 +16,14 @@ const sendHp = async (userName: string) => {
 
 export default sendHp;
 
-export const fetchApi = async (userName: string, endPoint: string, options?: Parameters<typeof fetch>[1]) => {
+export const fetchApi = async (endPoint: string, options?: Parameters<typeof fetch>[1], params?: string) => {
 	try {
-		const response = await fetch(`https://${import.meta.env.VITE_BACKEND_URL || process.env.VITE_BACKEND_URL}:${import.meta.env.VITE_BACKEND_PORT || process.env.VITE_BACKEND_PORT}/api/${endPoint}?user_id=${userName}`, {
+		const response = await fetch(`https://${import.meta.env.VITE_BACKEND_URL || process.env.VITE_BACKEND_URL}:${import.meta.env.VITE_BACKEND_PORT || process.env.VITE_BACKEND_PORT}/api/${endPoint}${params ?? ''}`, {
 			method: 'POST',
 			...options,
 			headers: {
 				'Content-Type': 'application/json;charset=UTF-8',
+				'ngrok-skip-browser-warning': 'true',
 				...options?.headers,
 			},
 		});

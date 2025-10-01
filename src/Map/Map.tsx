@@ -2,39 +2,39 @@ import { Link } from 'react-router-dom';
 import bank from '../img/bank.png';
 import barber from '../img/barber.png';
 import institute from '../img/institute.png';
-import home from '../img/home.png';
+import map from '../img/map.png';
+import { HomeButton } from '../HomeButton';
 
 const Map = () => {
 	return (
 		<div className='mapWrapper'>
+			<img
+				style={{ height: '100%', width: '100%' }}
+				src={map}
+				alt=''
+			/>
 			<Link to='/Bank'>
 				<img
 					src={bank}
 					alt=''
-					style={{ position: 'absolute', left: '16rem', top: '6.4rem', width: '7.8rem' }}
+					style={{ position: 'absolute', left: '50%', top: '17%', width: '30%', height: '25%' }}
 				/>
 			</Link>
 			<Link to='/Institute'>
 				<img
 					src={institute}
 					alt=''
-					style={{ position: 'absolute', left: '13.8rem', top: '27.3rem', width: '12.5rem' }}
+					style={{ position: 'absolute', left: '50%', top: '50%', width: '35%', height: '25%' }}
 				/>
 			</Link>
 			<Link to='/Barber'>
 				<img
 					src={barber}
 					alt=''
-					style={{ position: 'absolute', left: '4.5rem', top: '9.71rem', width: '9rem' }}
+					style={{ position: 'absolute', left: '15%', top: '10%', width: '30%', height: '25%' }}
 				/>
 			</Link>
-			<Link to='/'>
-				<img
-					src={home}
-					alt=''
-					style={{ position: 'absolute', left: '.5rem', top: '48rem', width: '5rem' }}
-				/>
-			</Link>
+			<HomeButton />
 		</div>
 	);
 };

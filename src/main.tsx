@@ -8,6 +8,7 @@ import Barber from './Map/Barber.tsx';
 import App from './Main/App.tsx';
 import { USER_NAME_KEY } from './constants.ts';
 import { fetchApi } from './Back-end/Back-end.tsx';
+import { Modal } from './Modal.tsx';
 
 export const AppContext = createContext<Record<string, [unknown, React.Dispatch<React.SetStateAction<unknown>>]>>({});
 
@@ -23,7 +24,7 @@ const MainNavigation = () => {
 	const navigate = useNavigate();
 
 	const checkUserName = async () => {
-		const response = await fetchApi(userName, 'auth', { method: 'POST', body: JSON.stringify({ user_id: userName }) });
+		const response = await fetchApi('auth', { method: 'POST', body: JSON.stringify({ user_id: userName }) }, `?user_id=${userName}`);
 		if (response) {
 			setIsAuth(true);
 		}
@@ -43,25 +44,23 @@ const MainNavigation = () => {
 	useEffect(() => {
 		if (isAuth) {
 			(async () => {
-				const response = await fetchApi(userName, 'salary', { method: 'GET' });
+				const response = await fetchApi('salary', { method: 'GET' }, `?user_id=${userName}`);
 				if (response) {
 					setSalary(response);
 				}
 			})();
 			(async () => {
-				const response = await fetchApi(userName, 'hp', { method: 'GET' });
+				const response = await fetchApi('hp', { method: 'GET' }, `?user_id=${userName}`);
 				if (response) {
 					setHp(response);
 				}
 			})();
 			(async () => {
-				const response = await fetchApi(userName, 'mortgage_rate', { method: 'GET' });
+				const response = await fetchApi('mortgage_rate', { method: 'GET' }, `?user_id=${userName}`);
 				if (response) {
 					setMortgageRate(response);
 				}
 			})();
-			fetchApi(userName, 'questions', { method: 'GET' });
-			fetchApi(userName, 'lectures', { method: 'GET' });
 		} else {
 			navigate('/', { replace: true });
 		}
@@ -71,22 +70,20 @@ const MainNavigation = () => {
 		return (
 			<AppContext value={context}>
 				<div className='content'>
-					<div className='authWrapper'>
-						<div className='authModal'>
-							<h3 className='authHeader'>Введите имя пользователя</h3>
-							<input
-								className='authInput'
-								value={userName}
-								onChange={(event) => setUserName(event.target.value)}
-							/>
-							<button
-								className='pixelButton'
-								onClick={checkUserName}
-							>
-								ВОЙТИ
-							</button>
-						</div>
-					</div>
+					<Modal>
+						<h3 className='authHeader'>Введите имя пользователя</h3>
+						<input
+							className='authInput'
+							value={userName}
+							onChange={(event) => setUserName(event.target.value)}
+						/>
+						<button
+							className='pixelButton'
+							onClick={checkUserName}
+						>
+							ВОЙТИ
+						</button>
+					</Modal>
 				</div>
 			</AppContext>
 		);
