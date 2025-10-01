@@ -6,6 +6,7 @@ import Bank from './Map/Bank.tsx';
 import Institute from './Map/Institute.tsx';
 import Barber from './Map/Barber.tsx';
 import App from './Main/App.tsx';
+import MiniGames from './MiniGames/MiniGames.tsx'
 
 const MainNavigation = () => (
 	<Router>
@@ -29,6 +30,10 @@ const MainNavigation = () => (
 			<Route
 				path='/Institute'
 				element={<Institute />}
+			/>
+			<Route
+				path='/MiniGames'
+				element={<MiniGames />}
 			/>
 		</Routes>
 	</Router>

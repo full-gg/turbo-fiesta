@@ -47,6 +47,9 @@ const App: FC = () => {
 						/>
 					</div>
 				</Link>
+				<Link to="/MiniGames">
+					<span className='map_title'>Мини-игры</span>
+				</Link>
 			</section>
 		</>
 	);
