@@ -14,7 +14,7 @@ export default sendHp;
 
 export const fetchApi = async (userName: string, endPoint: string, options?: Parameters<typeof fetch>[1]) => {
 	try {
-		const response = await fetch(`https://${import.meta.env.VITE_BACKEND_URL || process.env.VITE_BACKEND_URL}:${import.meta.env.VITE_BACKEND_PORT || process.env.VITE_BACKEND_PORT}/api/${endPoint}?${userName}`, {
+		const response = await fetch(`https://${import.meta.env.VITE_BACKEND_URL || process.env.VITE_BACKEND_URL}:${import.meta.env.VITE_BACKEND_PORT || process.env.VITE_BACKEND_PORT}/api/${endPoint}?user_id=${userName}`, {
 			method: 'POST',
 			...options,
 			headers: {
