@@ -244,13 +244,14 @@ body {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	place-items: center;
-	overflow: auto;
 }
 
 .barber {
 	background-image: url(../img/barber_office.png);
 	background-repeat: no-repeat;
 	width: 100%;
+	overflow: auto;
+	height: 100vh;
 }
 
 .bank {

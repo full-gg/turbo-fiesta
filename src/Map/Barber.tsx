@@ -5,9 +5,7 @@ import { MapButton } from '../MapButton.tsx';
 const Barber = () => {
 	return (
 		<main className='barber'>
-			<div>
-				<ChangePhoto />
-			</div>
+			<ChangePhoto />
 			<HomeButton />
 			<MapButton />
 		</main>
