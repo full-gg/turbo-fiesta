@@ -61,7 +61,7 @@ const ChangePhoto: FC = () => {
 		<>
 			<div
 				className='Barber_grid'
-				style={{ gridTemplateRows: `1fr repeat(${ProfileImage.length}, 1fr)` }}
+				style={{ gridTemplateRows: `1fr repeat(${Math.ceil(ProfileImage.length / 2)}, 1fr)` }}
 			>
 				<img
 					className='mainAvatar'
