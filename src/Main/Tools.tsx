@@ -62,14 +62,15 @@ type ProgressBar = {
 	progress: number;
 };
 
-const Progress = ({ progress }: ProgressBar, { salary }: Salary) => {
-	const purpose = 2000000;
-	const purpose_percent = (salary / purpose) * 100;
+const Progress = ({ progress }: ProgressBar) => {
 	return (
-		<div
-			className='progress_bar'
-			style={{ color: 'red', width: `${progress}%`, backgroundImage: `linear-gradient(90deg, #3CFFB9 ${purpose_percent}%, white ${100 - purpose}%` }}
-		></div>
+		<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+			<h4>Цель 10_000_000</h4>
+			<div
+				className='progress_bar'
+				style={{ color: 'red', width: '100%', backgroundImage: `linear-gradient(to right, #3CFFB9 0%, #3CFFB9 ${progress}%, white ${progress}%, white 100%` }}
+			></div>
+		</div>
 	);
 };
 

@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 import { useContext, type FC } from 'react';
 import './App.css';
 import menu_map from '../img/menu_map.png';
-import main_profile from '../img/profile_img/main_profile.png';
 import { Welcome, Progress, SalaryMoney, Hp } from './Tools.tsx';
 import { AppContext } from '../main.tsx';
+import { ProfileImage } from '../Map/BarberApp.tsx';
 
 const App: FC = () => {
 	const context = useContext(AppContext);
@@ -20,7 +20,7 @@ const App: FC = () => {
 					</div>
 					<div className='profile'>
 						<img
-							src={main_profile}
+							src={ProfileImage[context.avatar[0] as number].ImageUrl}
 							alt='Main Profile'
 							style={{ width: '11rem' }}
 						/>
@@ -35,7 +35,8 @@ const App: FC = () => {
 					</div>
 				</section>
 				<section>
-					{Progress({ progress: 100 }, { salary: 100000 })}</section>
+					<Progress progress={context.progress[0] as number} />
+				</section>
 				<section>
 					<Link to='/Map'>
 						<div className='map'>
