@@ -252,6 +252,12 @@ body {
 	width: 100%;
 }
 
+.bank {
+	background-image: url(../img/bank_office.png);
+	background-repeat: no-repeat;
+	width: 100%;
+}
+
 .mainAvatar {
 	grid-row-start: 1;
 	grid-column-start: 1;
