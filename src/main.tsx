@@ -22,6 +22,7 @@ const MainNavigation = () => {
 	const [hp, setHp] = useState<number>(0);
 	const location = useLocation();
 	const navigate = useNavigate();
+	const [progress, setProgress] = useState<number>(0)
 
 	const checkUserName = async () => {
 		const response = await fetchApi('auth', { method: 'POST', body: JSON.stringify({ user_id: userName }) }, `?user_id=${userName}`);
@@ -37,8 +38,9 @@ const MainNavigation = () => {
 			mortgageRate: [mortgageRate, setMortgageRate] as [unknown, React.Dispatch<React.SetStateAction<unknown>>],
 			hp: [hp, setHp] as [unknown, React.Dispatch<React.SetStateAction<unknown>>],
 			isAuth: [isAuth, setIsAuth] as [unknown, React.Dispatch<React.SetStateAction<unknown>>],
+			progress: [progress,setProgress] as [unknown, React.Dispatch<React.SetStateAction<unknown>>],
 		}),
-		[userName, salary, mortgageRate, hp, isAuth],
+		[userName, salary, mortgageRate, hp, isAuth,progress],
 	);
 
 	useEffect(() => {
@@ -59,6 +61,12 @@ const MainNavigation = () => {
 				const response = await fetchApi('mortgage_rate', { method: 'GET' }, `?user_id=${userName}`);
 				if (response) {
 					setMortgageRate(response);
+				}
+			})();
+			(async () => {
+				const response = await fetchApi('progress', { method: 'GET' }, `?user_id=${userName}`);
+				if (response) {
+					setProgress(response);
 				}
 			})();
 		} else {
