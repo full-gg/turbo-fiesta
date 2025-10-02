@@ -240,6 +240,26 @@ body {
 	width: 100%;
 }
 
+.Barber_grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	place-items: center;
+}
+
+.barber {
+	background-image: url(../img/barber_office.png);
+	background-repeat: no-repeat;
+	width: 100%;
+}
+
+.mainAvatar {
+	grid-row-start: 1;
+	grid-column-start: 1;
+
+	grid-row-end: 2;
+	grid-column-end: 3;
+}
+
 @media (pointer: coarse) and (hover: none) {
 	* {
 		cursor: none;

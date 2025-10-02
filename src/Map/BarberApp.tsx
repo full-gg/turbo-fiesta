@@ -59,14 +59,15 @@ const ChangePhoto: FC = () => {
 
 	return (
 		<>
-			<img
-				src={ProfileImage[index].ImageUrl}
-				alt=''
-			/>
 			<div
 				className='Barber_grid'
-				style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}
+				style={{ gridTemplateRows: `1fr repeat(${ProfileImage.length}, 1fr)` }}
 			>
+				<img
+					className='mainAvatar'
+					src={ProfileImage[index].ImageUrl}
+					alt=''
+				/>
 				{ProfileImage.map((item, i) => (
 					<div key={item.id}>
 						<img
