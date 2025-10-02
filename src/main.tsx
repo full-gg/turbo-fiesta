@@ -23,6 +23,7 @@ const MainNavigation = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const [progress, setProgress] = useState<number>(0)
+	const [avatar, setAvatar] = useState<number>(0)
 
 	const checkUserName = async () => {
 		const response = await fetchApi('auth', { method: 'POST', body: JSON.stringify({ user_id: userName }) }, `?user_id=${userName}`);
@@ -39,6 +40,7 @@ const MainNavigation = () => {
 			hp: [hp, setHp] as [unknown, React.Dispatch<React.SetStateAction<unknown>>],
 			isAuth: [isAuth, setIsAuth] as [unknown, React.Dispatch<React.SetStateAction<unknown>>],
 			progress: [progress,setProgress] as [unknown, React.Dispatch<React.SetStateAction<unknown>>],
+			avatar: [avatar,setAvatar] as [unknown, React.Dispatch<React.SetStateAction<unknown>>],
 		}),
 		[userName, salary, mortgageRate, hp, isAuth,progress],
 	);
@@ -67,6 +69,18 @@ const MainNavigation = () => {
 				const response = await fetchApi('progress', { method: 'GET' }, `?user_id=${userName}`);
 				if (response) {
 					setProgress(response);
+				}
+			})();
+			(async () => {
+				const response = await fetchApi('avatar', { method: 'GET' }, `?user_id=${userName}`);
+				if (response) {
+					setAvatar(response);
+				}
+			})();
+			(async () => {
+				const response = await fetchApi('avatar', { method: 'PUT' }, `?user_id=${userName}`);
+				if (response) {
+					setAvatar(response);
 				}
 			})();
 		} else {

@@ -5,6 +5,7 @@ import map_icon from '../img/map_icon.png';
 import ChangePhoto from './BarberApp.tsx';
 
 const Barber = () => {
+	
 	return (
 		<main
 			className='barber'

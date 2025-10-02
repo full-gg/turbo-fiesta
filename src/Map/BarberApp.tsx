@@ -1,4 +1,4 @@
-import { type FC, useState } from 'react';
+import { type FC, useContext, useState } from 'react';
 import main_profile from '../img/profile_img/main_profile.png';
 import womain_profile from '../img/profile_img/womain_profile.png';
 import main_hawaian from '../img/profile_img/main_hawaian.png';
@@ -7,6 +7,8 @@ import main_knight from '../img/profile_img/main_knight.png';
 import womain_queen from '../img/profile_img/womain_queen.png';
 import main_alien from '../img/profile_img/main_alien.png';
 import womain_goth from '../img/profile_img/womain_goth.png';
+import { AppContext } from '../main';
+import { fetchApi } from '../Back-end/Back-end';
 
 const ProfileImage = [
 	{
@@ -53,6 +55,8 @@ const ProfileImage = [
 
 const ChangePhoto: FC = () => {
 	const [index, setIndex] = useState(0);
+	const context = useContext(AppContext)
+
 
 	return (
 		<>
@@ -68,7 +72,11 @@ const ChangePhoto: FC = () => {
 					<div key={item.id}>
 						<img
 							src={item.ImageUrl}
-							onClick={() => setIndex(i)}
+							onClick={
+								async () => {
+									setIndex(i),
+										await fetchApi('avatar', { method: 'PUT', body: JSON.stringify({ user_id: context.userName[0], new_avatar: i }) });
+								}}
 						/>
 					</div>
 				))}

@@ -34,7 +34,8 @@ const App: FC = () => {
 						<div>{context.mortgageRate[0] as number}</div>
 					</div>
 				</section>
-				<section>{Progress({ progress: 100 }, { salary: 100000 })}</section>
+				<section>
+					{Progress({ progress: 100 }, { salary: 100000 })}</section>
 				<section>
 					<Link to='/Map'>
 						<div className='map'>
