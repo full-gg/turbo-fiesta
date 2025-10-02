@@ -10,7 +10,7 @@ import womain_goth from '../img/profile_img/womain_goth.png';
 import { AppContext } from '../main';
 import { fetchApi } from '../Back-end/Back-end';
 
-const ProfileImage = [
+export const ProfileImage = [
 	{
 		title: 'Main_profile',
 		id: 1,
@@ -55,28 +55,27 @@ const ProfileImage = [
 
 const ChangePhoto: FC = () => {
 	const [index, setIndex] = useState(0);
-	const context = useContext(AppContext)
-
+	const context = useContext(AppContext);
 
 	return (
 		<>
-			<img
-				src={ProfileImage[index].ImageUrl}
-				alt=''
-			/>
 			<div
 				className='Barber_grid'
-				style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}
+				style={{ gridTemplateRows: `1fr repeat(${Math.ceil(ProfileImage.length / 2)}, 1fr)` }}
 			>
+				<img
+					className='mainAvatar'
+					src={ProfileImage[index].ImageUrl}
+					alt=''
+				/>
 				{ProfileImage.map((item, i) => (
 					<div key={item.id}>
 						<img
 							src={item.ImageUrl}
-							onClick={
-								async () => {
-									setIndex(i),
-										await fetchApi('avatar', { method: 'PUT', body: JSON.stringify({ user_id: context.userName[0], new_avatar: i }) });
-								}}
+							onClick={async () => {
+								setIndex(i);
+								await fetchApi('avatar', { method: 'PUT', body: JSON.stringify({ user_id: context.userName[0], new_avatar: i }) });
+							}}
 						/>
 					</div>
 				))}
