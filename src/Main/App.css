@@ -33,7 +33,7 @@ body {
 	justify-content: center;
 }
 
-.content > div {
+.content>div {
 	max-width: 700px;
 }
 
@@ -59,26 +59,30 @@ body {
 	gap: 15px;
 }
 
-.authHeader {
-}
+.authHeader {}
 
 .authInput {
 	width: 100%;
 	font-size: 14px;
-	color: #ded838; /* ярко-зеленый цвет, как в ретро-терминалах */
-	background-color: #000000; /* черный фон */
+	color: #ded838;
+	/* ярко-зеленый цвет, как в ретро-терминалах */
+	background-color: #000000;
+	/* черный фон */
 	/* border: 4px solid #ded838; толстая пиксельная рамка */
 	outline: none;
 	padding: 8px 12px;
 	box-sizing: border-box;
-	image-rendering: pixelated; /* для четкости пикселей */
-	letter-spacing: 2px; /* увеличенный межбуквенный интервал */
+	image-rendering: pixelated;
+	/* для четкости пикселей */
+	letter-spacing: 2px;
+	/* увеличенный межбуквенный интервал */
 	box-shadow:
 		1px 0 #ded838,
 		-1px 0 #ded838,
 		0 1px #ded838,
 		0 -1px #ded838;
-	border-radius: 0; /* без скруглений */
+	border-radius: 0;
+	/* без скруглений */
 	caret-color: #ded838;
 }
 
@@ -105,10 +109,12 @@ body {
 	box-shadow: 4px 4px 0 #e3dd3c93;
 	position: relative;
 }
+
 .pixelButton:hover {
 	background-color: #007700;
 	color: #00ff00;
 }
+
 .pixelButton:active {
 	box-shadow: none;
 	top: 4px;
@@ -135,6 +141,10 @@ body {
 	color: white;
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
+}
+
+a {
+	color: white;
 }
 
 *:not(li) {
@@ -198,6 +208,7 @@ body {
 	font-size: 1rem;
 	text-align: center;
 }
+
 /* Секция прогресса */
 .progress_bar {
 	border-radius: 2rem;

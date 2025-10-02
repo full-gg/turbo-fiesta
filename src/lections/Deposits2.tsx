@@ -57,5 +57,6 @@ export const Deposits2 = () => (
 				<td>ПС + 2%</td>
 			</tr>
 		</table>
+		<p>Продукт доступен по <a href="https://www.gazprombank.ru/personal/increase/deposits/detail/7937943/">ссылке</a></p>
 	</div>
 );

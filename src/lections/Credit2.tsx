@@ -51,5 +51,6 @@ export const Credit2 = () => (
 			<li>Имейте финансовую подушку на случай непредвиденных обстоятельств</li>
 			<li>Помните: Кредит - это не дополнительный доход, а заем будущих денег!</li>
 		</ol>
+		<p>Продукт доступен по <a href="https://www.gazprombank.ru/personal/take_credit/consumer_credit/5004451/">ссылке</a></p>
 	</div>
 );

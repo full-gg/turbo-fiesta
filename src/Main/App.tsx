@@ -33,12 +33,10 @@ const App: FC = () => {
 						<span className='keybid_title'>Ключевая ставка: </span>
 						<div>{context.mortgageRate[0] as number}</div>
 					</div>
-					<div>
-						Вклады
-					</div>
 				</section>
 				<section>
-					{Progress({ progress: 100 }, { salary: 100000 })}</section>
+					<Progress progress={context.progress[0] as number} />
+				</section>
 				<section>
 					<Link to='/Map'>
 						<div className='map'>
